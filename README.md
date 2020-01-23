@@ -1,7 +1,8 @@
 
 # GitMiller
 
-GitMiller is a tool for running Jupyter Notebooks from a (partial) Github repository. It downloads the repository in your temp folder, runs a designated notebook within it and removes all downloaded files afterwards.
+GitMiller is a tool for running Jupyter Notebooks from a (partial) Github repository. It downloads the repository in your temp folder, runs a designated notebook within it, and 
+removes all downloaded files afterwards.
 
 ## Installation
 
@@ -28,16 +29,16 @@ The command-line interface takes the following input parameters:
 </tr>
 <tr>
     <td nowrap>-r, --repository</td>
-    <td>URL of GitHub repository</td>
+    <td>URL of GitHub repository (can be a subfolder)</td>
 </tr>
 <tr>
     <td nowrap>-n, --notebook</td>
-    <td>filename of notebook you wish to execute, this file must exist in the root of the (partially) downloaded folder structure.
+    <td>filename of notebook you wish to execute, this file must exist in the root folder of the (partially) downloaded folder structure.
     </td>
 </tr>
 <tr>
     <td nowrap>-o, --output</td>
-    <td>local path where Papermill will put an executed version of your notebook</td>
+    <td>local path where GitMiller will put the executed version of your notebook</td>
 </tr>
 <tr>
     <td nowrap>-c, --config</td>
@@ -45,9 +46,9 @@ The command-line interface takes the following input parameters:
 </tr>
 </table>
 
-GitMiller uses [Papermill](https://github.com/nteract/papermill) to run your remote notebook. Besides executing, Papermill also enables you to parameterize your notebooks. If you would like to override certain variables in your notebook, add the variables and values in the config YAML file under the `papermill` key.
+GitMiller uses [Papermill](https://github.com/nteract/papermill) to run your remote notebook. Besides executing, Papermill also enables you to parameterize notebooks. If you would like to override certain variables in your notebook, add the variables and values in the config YAML file under the `papermill` key. See example below.
 
-This repo contains a folder `example` in which a notebook `test.ipynb` exists. If you would like to run this notebook with GitMiller, use either:
+This repository contains a folder `example` in which a notebook `test.ipynb` exists. If you would like to run this notebook with GitMiller, use either:
 
 ```
 $ gitmiller -u <GITHUB USERNAME> -p <GITHUB PASSWORD>, -r https://github.com/UtrechtUniversity/GitMiller/tree/master/example, -n test.ipynb, -o <LOCAL OUTPUT-PATH>
