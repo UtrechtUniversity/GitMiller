@@ -22,7 +22,7 @@ The command-line interface takes the following input parameters:
 | -o,<br />--output | local path where Papermill will put an executed version of your notebook |
 | -c,<br />--config | local path of YAML file in which you can add all mentioned paramaters |
 
-GitMiller uses [Papermill](https://github.com/nteract/papermill) to run your remote notebook. Besides executing, Papermill also enables you to parameterize your notebooks. If you would like to override certain variables in your notebook, add the variables and values in the config YAML file
+GitMiller uses [Papermill](https://github.com/nteract/papermill) to run your remote notebook. Besides executing, Papermill also enables you to parameterize your notebooks. If you would like to override certain variables in your notebook, add the variables and values in the config YAML file under the `papermill` key.
 
 This repo contains a folder `example` in which a notebook `test.ipynb` exists. If you would like to run this notebook with GitMiller, use either:
 
