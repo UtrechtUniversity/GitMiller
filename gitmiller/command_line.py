@@ -39,11 +39,11 @@ def get_from_github(
             pars = yaml.load(file, Loader=yaml.FullLoader)
             # load repo_url, username, password, notebook,
             # output_path and papermill parameters
-            repo_url = pars.get('git_repo') or repo_url
-            username = pars.get('git_username') or username
-            password = pars.get('git_password') or password
-            notebook = pars.get('run_notebook') or notebook
-            output_path = pars.get('output_notebook_path') or output_path
+            repo_url = pars.get('repository') or repo_url
+            username = pars.get('username') or username
+            password = pars.get('password') or password
+            notebook = pars.get('notebook') or notebook
+            output_path = pars.get('output') or output_path
             papermill_parameters = pars.get('papermill', {})
 
     # handle github repo by url
@@ -169,7 +169,7 @@ def main():
     # intercept repo, if model 
 
     get_from_github(
-        args.repo,
+        args.repository,
         args.username,
         args.password,
         args.notebook,
