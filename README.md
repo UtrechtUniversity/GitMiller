@@ -1,6 +1,8 @@
 
 # GitMiller
 
+This description can be found [on GitHub here](https://github.com/UtrechtUniversity/GitMiller)
+
 GitMiller is a tool for running Jupyter Notebooks from a (partial) Github repository. It downloads the repository in your temp folder, runs a designated notebook within it, and 
 removes all downloaded files afterwards.
 
