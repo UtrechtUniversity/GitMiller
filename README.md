@@ -15,7 +15,7 @@ The command-line interface takes the following input parameters:
 
 | parameter | description |
 | --- | --- |
-| -u, --username | Username to gain access to GitHub repository |
+| -u,<br />--username | Username to gain access to GitHub repository |
 | -p, --password | Password Github repository |
 | -r, --repository | URL of GitHub repository |
 | -n, --notebook | filename of notebook you wish to execute, this file must exist in the root of the (partially) downloaded folder structure.|
