@@ -13,14 +13,37 @@ After installation you can use the `gitmiller` command-line tool to run your git
 
 The command-line interface takes the following input parameters:
 
-| parameter | description |
-| --- | --- |
-| `-u, --username` | Username to gain access to GitHub repository |
-| `-p, --password` | Password Github repository |
-| `-r, --repository` | URL of GitHub repository |
-| `-n, --notebook` | filename of notebook you wish to execute, this file must exist in the root of the (partially) downloaded folder structure.|
-| `-o, --output` | local path where Papermill will put an executed version of your notebook |
-| `-c, --config` | local path of YAML file in which you can add all mentioned paramaters |
+<table>
+<tr>
+    <th>parameter</th>
+    <th>description</th>
+</tr>
+<tr>
+    <td nowrap>-u, --username</td>
+    <td>Username to gain access to GitHub repository</td>
+</tr>
+<tr>
+    <td nowrap>-p, --password</td>
+    <td>Password Github repository</td>
+</tr>
+<tr>
+    <td nowrap>-r, --repository</td>
+    <td>URL of GitHub repository</td>
+</tr>
+<tr>
+    <td nowrap>-n, --notebook</td>
+    <td>filename of notebook you wish to execute, this file must exist in the root of the (partially) downloaded folder structure.
+    </td>
+</tr>
+<tr>
+    <td nowrap>-o, --output</td>
+    <td>local path where Papermill will put an executed version of your notebook</td>
+</tr>
+<tr>
+    <td nowrap>-c, --config</td>
+    <td>local path of YAML file in which you can add all mentioned paramaters</td>
+</tr>
+</table>
 
 GitMiller uses [Papermill](https://github.com/nteract/papermill) to run your remote notebook. Besides executing, Papermill also enables you to parameterize your notebooks. If you would like to override certain variables in your notebook, add the variables and values in the config YAML file under the `papermill` key.
 
