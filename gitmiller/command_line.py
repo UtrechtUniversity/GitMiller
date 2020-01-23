@@ -155,7 +155,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-u', '--username', action='store', help='Github username')
     parser.add_argument('-p', '--password', action='store', help='Github password')
-    parser.add_argument('-r', '--repo', action='store', help='Github repo')
+    parser.add_argument('-r', '--repository', action='store', help='Github repo')
     parser.add_argument('-n', '--notebook', action='store', 
         help='Notebook to run, should be in root folder of Github repo')
     parser.add_argument('-o', '--output', action='store', 
