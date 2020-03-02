@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name = "gitmiller",
-    version = "0.1",
+    version = "0.1.3",
     author = "Casper Kaandorp",
     author_email = "c.s.kaandorp@uu.nl",
     description = "A tool to run a Jupyter Notebook from a (partial) Github repository.",
@@ -19,9 +19,7 @@ setuptools.setup(
         ]
     }, 
     classifiers=[
-        "Programming Language :: Python :: 3",
-        "Jupyter Notebook",
-        "Papermill"
+        "Programming Language :: Python :: 3"
     ],
     python_requires = '>=3.6',
     install_requires = [

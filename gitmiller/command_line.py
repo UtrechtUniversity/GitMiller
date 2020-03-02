@@ -29,8 +29,6 @@ def get_from_github(
 
     # these are parameters that need to be injected by papermill
     papermill_parameters = {}
-    # this is about using a sub-tree of the repo..
-    use_root = True
 
     # load config file 
     if config:
@@ -85,7 +83,6 @@ def get_from_github(
         if branch in branches:
             # change branche
             contents_path = '/'.join(split_path[4:])
-        use_root = False
     except:
         pass
 
@@ -135,20 +132,21 @@ def get_from_github(
             parameters = papermill_parameters
         )
 
-    except:
-        print(root_path)
+    except FileNotFoundError as e:
         # check if notebook exists in repo, if not return with False
         if not(Path(root_path).joinpath(notebook).is_file()):
-            msg = '!! Notebook {}\n!! could not be found in repo {}'.format(
+            msg = 'Notebook "{}" could not be found in repo {}'.format(
                 notebook,
                 repo_url
             )
             print(msg)
+        print(e)
 
     finally:
         # let's clean up the mess
         remove_path = Path(sys_temp).joinpath(split_path[0])
         shutil.rmtree(remove_path)
+
 
 
 def main():
