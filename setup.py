@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name = "gitmiller",
-    version = "0.1.3",
+    version = "0.1.4",
     author = "Casper Kaandorp",
     author_email = "c.s.kaandorp@uu.nl",
     description = "A tool to run a Jupyter Notebook from a (partial) Github repository.",
@@ -23,13 +23,12 @@ setuptools.setup(
     ],
     python_requires = '>=3.6',
     install_requires = [
-        'jupyterlab',
+        'jupyterlab>=1.2.6',
+        'nbformat>=5.1.2',
         'matlab_kernel',
         'papermill',
-        'PyGithub',
+        'PyGithub>=1.54.1',
         'pyyaml',
         'tqdm'
     ],
 )
-# rm /Users/casper/anaconda3/bin/meegmt; pip uninstall meegmt ; pip install .
-# pip uninstall meegmt ; pip install dist/MEEGmt-0.0.1-py3-none-any.whl ; meegmt

@@ -21,11 +21,12 @@ import github
 
 def get_from_github(
     repo_url, 
-    username, 
-    password, 
-    notebook, 
-    output_path, 
-    config):
+    notebook,
+    output_path,
+    username='', 
+    password='', 
+    token=False,
+    config=False):
 
     # these are parameters that need to be injected by papermill
     papermill_parameters = {}
@@ -40,6 +41,7 @@ def get_from_github(
             repo_url = pars.get('repository') or repo_url
             username = pars.get('username') or username
             password = pars.get('password') or password
+            token = pars.get('token') or token
             notebook = pars.get('notebook') or notebook
             output_path = pars.get('output') or output_path
             papermill_parameters = pars.get('papermill', {})
@@ -57,7 +59,7 @@ def get_from_github(
         return False
 
     # login and find repo
-    g = github.Github(username, password)
+    g = github.Github(token) if token else github.Github(username, password)
 
     # access repo
     repo = False 
@@ -99,6 +101,7 @@ def get_from_github(
             contents.extend(repo.get_contents(file_content.path))
         else:
             all_files.append(file_content)
+
 
     # progress bar to keep scientist occupied during downloading
     for f in tqdm(all_files, desc='Downloading repo'):
@@ -148,11 +151,11 @@ def get_from_github(
         shutil.rmtree(remove_path)
 
 
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-u', '--username', action='store', help='Github username')
     parser.add_argument('-p', '--password', action='store', help='Github password')
+    parser.add_argument('-t', '--token', action='store', help='Github token')
     parser.add_argument('-r', '--repository', action='store', help='Github repo')
     parser.add_argument('-n', '--notebook', action='store', 
         help='Notebook to run, should be in root folder of Github repo')
@@ -161,20 +164,21 @@ def main():
     parser.add_argument('-c', '--config', action='store', 
         help='Path to yaml file containing GitMiller script parameters and inlog parameters')
 
-
     args = parser.parse_args()
 
-    # intercept repo, if model 
+    function_arguments = {
+        'repo_url': args.repository,
+        'notebook': args.notebook, 
+        'output_path': args.output or './',
+        'config': args.config
+    }
+    if not args.token is None:
+        function_arguments['token'] = args.token
+    else:
+        function_arguments['username'] = args.username
+        function_arguments['password'] = args.password
 
-    get_from_github(
-        args.repository,
-        args.username,
-        args.password,
-        args.notebook,
-        args.output,
-        args.config
-    )
-
+    get_from_github(**function_arguments)
 
 
 if __name__ == '__main__':

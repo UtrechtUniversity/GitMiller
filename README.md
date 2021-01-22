@@ -30,6 +30,10 @@ The command-line interface takes the following input parameters:
     <td>Password Github repository</td>
 </tr>
 <tr>
+    <td nowrap>-t, --token</td>
+    <td>Or use a Github token</td>
+</tr>
+<tr>
     <td nowrap>-r, --repository</td>
     <td>URL of GitHub repository (can be a subfolder)</td>
 </tr>
